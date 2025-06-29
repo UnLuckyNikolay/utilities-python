@@ -1,14 +1,20 @@
 from collections.abc import Callable, Iterable
+from typing import Any
+from numbers import Number
 
 
-def bubble_sort(iterable: Iterable, key: Callable[[], int] = None, reverse: bool = False) -> list:
+def bubble_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reverse: bool = False) -> list:
     """
     Baby's first sort.
     Here just to party.
 
+    Sorts a copy of the iterable in place and returns as a list.
+
+    Cons: has no pros.
+
     Parameters
     ----------
-    iterable : any
+    iterable : Iterable
         Iterable that needs to be sorted
     key : func, optional
         Function that returns key used for sorting
@@ -18,9 +24,10 @@ def bubble_sort(iterable: Iterable, key: Callable[[], int] = None, reverse: bool
     Returns
     -------
     list
-        Sorted iterable
+        Sorted *copy* of the iterable
     """
 
+    iterable = list(iterable)
     swapping = True
     end = len(iterable)
 
