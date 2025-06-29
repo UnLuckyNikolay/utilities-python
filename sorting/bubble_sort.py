@@ -1,18 +1,40 @@
-def bubble_sort(input, key=None):
+from collections.abc import Callable, Iterable
+
+
+def bubble_sort(iterable: Iterable, key: Callable[[], int] = None, reverse: bool = False) -> list:
+    """
+    Baby's first sort.
+    Here just to party.
+
+    Parameters
+    ----------
+    iterable : any
+        Iterable that needs to be sorted
+    key : func, optional
+        Function that returns key used for sorting
+    reverse : bool, optional
+        Set to True to sort from biggest to lowest
+
+    Returns
+    -------
+    list
+        Sorted iterable
+    """
+
     swapping = True
-    end = len(input)
+    end = len(iterable)
 
     while swapping:
         swapping = False
+
         for i in range(1, end):
-            if key == None:
-                if input[i-1] > input[i]:
-                    input[i-1], input[i] = input[i], input[i-1]
-                    swapping = True
-            else:
-                if key(input[i-1]) > key(input[i]):
-                    input[i-1], input[i] = input[i], input[i-1]
-                    swapping = True
+            left_val = iterable[i-1] if key == None else key(iterable[i-1])
+            right_val = iterable[i] if key == None else key(iterable[i])
+
+            if (not reverse and left_val > right_val) or (reverse and left_val < right_val):
+                iterable[i-1], iterable[i] = iterable[i], iterable[i-1]
+                swapping = True
+
         end -= 1
 
-    return input
+    return iterable
