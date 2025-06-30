@@ -1,7 +1,8 @@
 import unittest
-from .bubble_sort import bubble_sort
-from .merge_sort import merge_sort
-from .insertion_sort import insertion_sort
+from sorting.bubble_sort import bubble_sort
+from sorting.merge_sort import merge_sort
+from sorting.insertion_sort import insertion_sort
+from sorting.quick_sort import quick_sort
 
 
 class Node():
@@ -141,6 +142,32 @@ class TestSorting(unittest.TestCase):
         nodes2 = self.nodes2.copy()
         nodes2 = insertion_sort(nodes2, key=lambda node: node.val, reverse=True)
         self.assertEqual(nodes2, self.nodes2_reverse)
+
+    # Quick sort
+    def test__sort__quick__numbers(self):
+        nums = self.nums.copy()
+        nums = quick_sort(nums)
+        self.assertEqual(nums, self.nums_sorted)
+
+    def test__sort__quick__numbers_reverse(self):
+        nums = self.nums.copy()
+        nums = quick_sort(nums, reverse=True)
+        self.assertEqual(nums, self.nums_reverse)
+
+    def test__sort__quick__numbers_tuple(self):
+        nums = self.nums_tuple
+        nums = quick_sort(nums)
+        self.assertEqual(nums, self.nums_tuple_sorted)
+
+    def test__sort__quick__nodes(self):
+        nodes = self.nodes.copy()
+        nodes = quick_sort(nodes, key=lambda node: node.val)
+        self.assertEqual(nodes, self.nodes_sorted)
+
+    def test__sort__quick__nodes_reverse(self):
+        nodes = self.nodes.copy()
+        nodes = quick_sort(nodes, key=lambda node: node.val, reverse=True)
+        self.assertEqual(nodes, self.nodes_reverse)
 
     
 if __name__ == "__main__":
