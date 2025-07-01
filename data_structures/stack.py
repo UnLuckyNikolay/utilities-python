@@ -12,10 +12,10 @@ class StackIsFullError(Exception):
 class Stack:
     """
     Abstract data structure. Last in, first out.
+    Complexity of all methods - O(1).
 
     Methods
     -------
-
     - push(item)
         Puts an item at the top of the stack.
 
@@ -31,14 +31,13 @@ class Stack:
         Returns the size of the stack.
 
     - is_empty -> bool
-        Returns `True` if Stack is empty, otherwise `False`.
+        Returns `True` if stack is empty, otherwise `False`.
 
     - is_full -> bool
         Returns `True` if `max_size` is set and the stack is full, otherwise `False`.
 
     Raises
     ------
-
     - StackIsFullError
         If `max_size` is set and `push` is performed when size of the stack equals `max_size`.
 
@@ -50,13 +49,13 @@ class Stack:
         """
         Args
         ----
-        
-        - max_size : int
+        - max_size : int, optional
             Maximum size of the stack. 
             (default = None)
 
-        - raise_errors_on_empty_op : bool
+        - raise_errors_on_empty_op : bool, optional
             Changes `peek`/`pop` to raise errors if the stack is empty instead of returning `None`.
+            (default = False)
         """
         self._items = []
         self._max_size = max_size

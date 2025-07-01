@@ -10,13 +10,13 @@ def shuffle(iterable: Iterable) -> list:
 
     Parameters
     ----------
-    iterable : Iterable
-        Iterable to be shuffled
+    - iterable : Iterable
+        Iterable to be shuffled.
     
     Returns
     -------
-    list
-        A shuffled *copy* of the iterable
+    - list
+        A shuffled *copy* of the iterable.
     """
 
     iterable = list(iterable)

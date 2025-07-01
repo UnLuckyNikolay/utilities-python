@@ -12,18 +12,21 @@ def quick_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reverse:
     
     Parameters
     ----------
-    iterable : Iterable
+    - iterable : Iterable
         Iterable that needs to be sorted.
-    key : func, optional
-        None by default. Function that returns key used for sorting.
-    reverse : bool, optional
-        False by default. Set to True to sort from biggest to lowest.
-    shuffling : bool, optional
-        True by default. Shuffles the iterable to make sure it isn't pre-sorted.
+    - key : func, optional
+        Function that returns key used for sorting.
+        (default = None)
+    - reverse : bool, optional
+        Set to True to sort from biggest to lowest.
+        (default = False)
+    - shuffling : bool, optional
+        Shuffles the iterable to make sure it isn't pre-sorted.
+        (default = True)
 
     Returns
     -------
-    list
+    - list
         Sorted *copy* of the iterable.
     """
 

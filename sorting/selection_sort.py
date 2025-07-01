@@ -11,17 +11,19 @@ def selection_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reve
     
     Parameters
     ----------
-    iterable : Iterable
-        Iterable that needs to be sorted
-    key : func, optional
-        Function that returns key used for sorting
-    reverse : bool, optional
-        Set to True to sort from biggest to lowest
+    - iterable : Iterable
+        Iterable that needs to be sorted.
+    - key : func, optional
+        Function that returns key used for sorting.
+        (default = None)
+    - reverse : bool, optional
+        Set to True to sort from biggest to lowest.
+        (default = False)
 
     Returns
     -------
-    list
-        Sorted *copy* of the iterable
+    - list
+        Sorted *copy* of the iterable.
     """
 
     iterable = list(iterable)

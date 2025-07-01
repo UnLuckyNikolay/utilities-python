@@ -12,17 +12,19 @@ def merge_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reverse:
 
     Parameters
     ----------
-    iterable : Iterable
-        Iterable that needs to be sorted
-    key : func, optional
-        Function that returns key used for sorting
-    reverse : bool, optional
-        Set to True to sort from biggest to lowest
+    - iterable : Iterable
+        Iterable that needs to be sorted.
+    - key : func, optional
+        Function that returns key used for sorting.
+        (default = None)
+    - reverse : bool, optional
+        Set to True to sort from biggest to lowest.
+        (default = False)
 
     Returns
     -------
-    list
-        Sorted *copy* of the iterable
+    - list
+        Sorted *copy* of the iterable.
     """
 
     if len(iterable) < 2:
@@ -36,22 +38,6 @@ def merge_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reverse:
 def _merge(left: Iterable, right: Iterable, key: Callable[[Any], Number], reverse: bool) -> list:
     """
     Inner function for merge_sort used to merge split lists back.
-
-    Parameters
-    ----------
-    left : Iterable
-        Left half of the iterable
-    right : Iterable
-        Right halt of the iterable
-    key : func
-        Function that returns key used for sorting
-    reverse : bool
-        Set to True to sort from biggest to lowest
-
-    Returns
-    -------
-    list
-        Sorted *copy* of the iterable
     """
 
     final = []
