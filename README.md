@@ -13,3 +13,4 @@ Also includes `test.sh` used to run unittests.
     - Selection sort 
 - Data structures/
     - Stack
+    - Queue
