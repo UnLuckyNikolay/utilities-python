@@ -62,7 +62,8 @@ class Stack:
         self._raise_errors_on_empty_op = raise_errors_on_empty_op
 
     def __repr__(self):
-        return f"Stack{self._items}"
+        items_repr = ", ".join(repr(item) for item in reversed(self._items))
+        return f"Stack[{items_repr}]"
 
     def __iter__(self):
         return reversed(self._items)

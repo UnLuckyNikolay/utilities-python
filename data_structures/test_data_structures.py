@@ -20,7 +20,7 @@ class TestDataStructures(unittest.TestCase):
         stack.push(Node(1))
         stack.push(Node(2))
         stack.push(Node(3))
-        self.assertEqual(repr(stack), "Stack[Node(1), Node(2), Node(3)]")
+        self.assertEqual(repr(stack), "Stack[Node(3), Node(2), Node(1)]")
 
     def test__data_structures__stack__pop(self):
         stack = Stack()
@@ -29,7 +29,7 @@ class TestDataStructures(unittest.TestCase):
         stack.push(Node(3))
         item = stack.pop()
         self.assertEqual(item, Node(3))
-        self.assertEqual(repr(stack), "Stack[Node(1), Node(2)]")
+        self.assertEqual(repr(stack), "Stack[Node(2), Node(1)]")
 
     def test__data_structures__stack__peek(self):
         stack = Stack()
@@ -38,7 +38,7 @@ class TestDataStructures(unittest.TestCase):
         stack.push(Node(3))
         item = stack.peek()
         self.assertEqual(item, Node(3))
-        self.assertEqual(repr(stack), "Stack[Node(1), Node(2), Node(3)]")
+        self.assertEqual(repr(stack), "Stack[Node(3), Node(2), Node(1)]")
 
     def test__data_structures__stack__push_on_full__exception(self):
         stack = Stack(max_size=1)
