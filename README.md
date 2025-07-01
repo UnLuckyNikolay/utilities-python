@@ -11,3 +11,5 @@ Also includes `test.sh` used to run unittests.
     - Merge sort
     - Quick sort
     - Selection sort 
+- Data structures/
+    - Stack
