@@ -1,6 +1,6 @@
 # Utilities for Python
 
-A bunch of utilities saved for using as a submodule/copypaste/cheatsheet. \
+A bunch of utilities written down for using as a submodule/copypaste/cheatsheet. \
 Also includes `test.sh` used to run unittests.
 
 ## Content:
@@ -14,3 +14,4 @@ Also includes `test.sh` used to run unittests.
 - Data structures/
     - Stack
     - Queue
+    - Linked List

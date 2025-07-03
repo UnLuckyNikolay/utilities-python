@@ -1,6 +1,7 @@
 import unittest
 from data_structures.stack import Stack, StackIsEmptyError, StackIsFullError
 from data_structures.queue import Queue, QueueIsEmptyError, QueueIsFullError
+from data_structures.linked_list import LinkedList, LListIsEmptyError, LListIsFullError
 
 
 class Node:
@@ -148,4 +149,81 @@ class TestDataStructures(unittest.TestCase):
         self.assertEqual(check, False)
         queue.push(Node(1))
         check = queue.is_full()
+        self.assertEqual(check, True)
+        
+    # Linked List
+    def test__data_structures__llist__push_to_tail(self):
+        llist = LinkedList()
+        llist.add_to_tail(1)
+        llist.add_to_tail("two")
+        llist.add_to_tail(3)
+        self.assertEqual(repr(llist), "[1 -> two -> 3]")
+
+    def test__data_structures__llist__push_to_head(self):
+        llist = LinkedList()
+        llist.add_to_head(3)
+        llist.add_to_head("two")
+        llist.add_to_head(1)
+        self.assertEqual(repr(llist), "[1 -> two -> 3]")
+
+    def test__data_structures__llist__pop(self):
+        llist = LinkedList()
+        llist.add_to_head(3)
+        llist.add_to_head("two")
+        llist.add_to_head(1)
+        item = llist.pop_from_head()
+        self.assertEqual(item, 1)
+        self.assertEqual(repr(llist), "[two -> 3]")
+
+    def test__data_structures__llist__peek(self):
+        llist = LinkedList()
+        llist.add_to_head(3)
+        llist.add_to_head("two")
+        llist.add_to_head(1)
+        item = llist.peek_from_head()
+        self.assertEqual(item, 1)
+        self.assertEqual(repr(llist), "[1 -> two -> 3]")
+
+    def test__data_structures__llist__add_to_full__exception(self):
+        llist = LinkedList(max_size=1)
+        llist.add_to_head(1)
+        with self.assertRaises(LListIsFullError):
+            llist.add_to_head(2)
+        with self.assertRaises(LListIsFullError):
+            llist.add_to_tail(3)
+
+    def test__data_structures__llist__pop_on_empty__exception(self):
+        llist = LinkedList(raise_errors_on_empty_op=True)
+        with self.assertRaises(LListIsEmptyError):
+            llist.pop_from_head()
+
+    def test__data_structures__llist__peek_on_empty__exception(self):
+        llist = LinkedList(raise_errors_on_empty_op=True)
+        with self.assertRaises(LListIsEmptyError):
+            llist.peek_from_head()
+
+    def test__data_structures__llist__pop_on_empty(self):
+        llist = LinkedList()
+        item = llist.pop_from_head()
+        self.assertEqual(item, None)
+
+    def test__data_structures__llist__peek_on_empty(self):
+        llist = LinkedList()
+        item = llist.peek_from_head()
+        self.assertEqual(item, None)
+
+    def test__data_structures__llist__is_empty(self):
+        llist = LinkedList()
+        check = llist.is_empty()
+        self.assertEqual(check, True)
+        llist.add_to_head(1)
+        check = llist.is_empty()
+        self.assertEqual(check, False)
+
+    def test__data_structures__llist__is_full(self):
+        llist = LinkedList(max_size=1)
+        check = llist.is_full()
+        self.assertEqual(check, False)
+        llist.add_to_head(1)
+        check = llist.is_full()
         self.assertEqual(check, True)
