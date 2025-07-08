@@ -7,7 +7,7 @@ Also includes `test.sh` used to run unittests.
 - Shuffle
 - Sorting/
     - Bubble sort
-    - Insertion Sort
+    - Insertion sort
     - Merge sort
     - Quick sort
     - Selection sort 
@@ -16,3 +16,4 @@ Also includes `test.sh` used to run unittests.
     - Queue
     - Linked List
     - LLQueue
+    - Binary Tree

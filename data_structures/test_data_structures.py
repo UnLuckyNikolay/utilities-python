@@ -3,7 +3,7 @@ from data_structures.stack import Stack, StackIsEmptyError, StackIsFullError
 from data_structures.queue import Queue, QueueIsEmptyError, QueueIsFullError
 from data_structures.linked_list import LinkedList, LListIsEmptyError, LListIsFullError
 from data_structures.llqueue import LLQueue, LLQueueIsEmptyError, LLQueueIsFullError
-#from data_structures.red_black_tree import RedBlackTree, ValueAlreadyInRedBlackTreeError
+from data_structures.binary_tree import BinaryTree, ValueAlreadyInBinaryTreeError
 
 
 class Node:
@@ -299,3 +299,59 @@ class TestDataStructures(unittest.TestCase):
         llist.push(1)
         check = llist.is_full()
         self.assertEqual(check, True)
+
+    # Binary Tree
+    def test__data_structures__binary_tree__inorder(self):
+        bt = BinaryTree()
+        for i in [4, 2, 1, 3, 6, 5, 7]:
+            bt.insert(i)
+        self.assertEqual(bt.inorder(), [1, 2, 3, 4, 5, 6, 7])
+
+    def test__data_structures__binary_tree__preorder(self):
+        bt = BinaryTree()
+        for i in [4, 2, 1, 3, 6, 5, 7]:
+            bt.insert(i)
+        self.assertEqual(bt.preorder(), [4, 2, 1, 3, 6, 5, 7])
+
+    def test__data_structures__binary_tree__postorder(self):
+        bt = BinaryTree()
+        for i in [4, 2, 1, 3, 6, 5, 7]:
+            bt.insert(i)
+        self.assertEqual(bt.postorder(), [1, 3, 2, 5, 7, 6, 4])
+
+    def test__data_structures__binary_tree__exists(self):
+        bt = BinaryTree()
+        for i in [4, 2, 1, 3, 6, 5, 7]:
+            bt.insert(i)
+        self.assertEqual(bt.exists(3), True)
+        self.assertEqual(bt.exists(12), False)
+
+    def test__data_structures__binary_tree__get_height(self):
+        bt = BinaryTree()
+        for i in [4, 2, 1, 3, 6, 5, 7]:
+            bt.insert(i)
+        self.assertEqual(bt.get_height(), 3)
+
+    def test__data_structures__binary_tree__get_min(self):
+        bt = BinaryTree()
+        for i in [4, 2, 1, 3, 6, 5, 7]:
+            bt.insert(i)
+        self.assertEqual(bt.get_min(), 1)
+
+    def test__data_structures__binary_tree__get_max(self):
+        bt = BinaryTree()
+        for i in [4, 2, 1, 3, 6, 5, 7]:
+            bt.insert(i)
+        self.assertEqual(bt.get_max(), 7)
+
+    def test__data_structures__binary_tree__delete(self):
+        bt = BinaryTree()
+        for i in [4, 2, 1, 3, 6, 5, 7]:
+            bt.insert(i)
+        bt.delete(5)
+        self.assertEqual(bt.inorder(), [1, 2, 3, 4, 6, 7])
+
+        #self.assertEqual(rbt.inorder(), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        #self.assertEqual(rbt.preorder(), [4, 2, 1, 3, 6, 5, 8, 7, 9, 10])
+        #self.assertEqual(rbt.postorder(), [1, 3, 2, 5, 7, 10, 9, 8, 6, 4])
+        #nums = [10, 6, 3, 4, 8, 7, 9, 1, 5, 2]
