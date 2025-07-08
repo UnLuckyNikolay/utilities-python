@@ -15,3 +15,4 @@ Also includes `test.sh` used to run unittests.
     - Stack
     - Queue
     - Linked List
+    - LLQueue

@@ -2,6 +2,8 @@ import unittest
 from data_structures.stack import Stack, StackIsEmptyError, StackIsFullError
 from data_structures.queue import Queue, QueueIsEmptyError, QueueIsFullError
 from data_structures.linked_list import LinkedList, LListIsEmptyError, LListIsFullError
+from data_structures.llqueue import LLQueue, LLQueueIsEmptyError, LLQueueIsFullError
+#from data_structures.red_black_tree import RedBlackTree, ValueAlreadyInRedBlackTreeError
 
 
 class Node:
@@ -225,5 +227,75 @@ class TestDataStructures(unittest.TestCase):
         check = llist.is_full()
         self.assertEqual(check, False)
         llist.add_to_head(1)
+        check = llist.is_full()
+        self.assertEqual(check, True)
+
+    # LLQueue
+    def test__data_structures__llqueue__push(self):
+        llist = LLQueue()
+        llist.push(1)
+        llist.push("two")
+        llist.push(3)
+        self.assertEqual(repr(llist), "LLQueue[1 <- two <- 3]")
+
+    def test__data_structures__llqueue__pop(self):
+        llist = LLQueue()
+        llist.push(1)
+        llist.push("two")
+        llist.push(3)
+        item = llist.pop()
+        self.assertEqual(item, 1)
+        self.assertEqual(repr(llist), "LLQueue[two <- 3]")
+
+    def test__data_structures__llqueue__peek(self):
+        llist = LLQueue()
+        llist.push(1)
+        llist.push("two")
+        llist.push(3)
+        item = llist.peek()
+        self.assertEqual(item, 1)
+        self.assertEqual(repr(llist), "LLQueue[1 <- two <- 3]")
+
+    def test__data_structures__llqueue__add_to_full__exception(self):
+        llist = LLQueue(max_size=1)
+        llist.push(1)
+        with self.assertRaises(LLQueueIsFullError):
+            llist.push(2)
+        with self.assertRaises(LLQueueIsFullError):
+            llist.push(3)
+
+    def test__data_structures__llqueue__pop_on_empty__exception(self):
+        llist = LLQueue(raise_errors_on_empty_op=True)
+        with self.assertRaises(LLQueueIsEmptyError):
+            llist.pop()
+
+    def test__data_structures__llqueue__peek_on_empty__exception(self):
+        llist = LLQueue(raise_errors_on_empty_op=True)
+        with self.assertRaises(LLQueueIsEmptyError):
+            llist.peek()
+
+    def test__data_structures__llqueue__pop_on_empty(self):
+        llist = LLQueue()
+        item = llist.pop()
+        self.assertEqual(item, None)
+
+    def test__data_structures__llqueue__peek_on_empty(self):
+        llist = LLQueue()
+        item = llist.peek()
+        self.assertEqual(item, None)
+
+    def test__data_structures__llqueue__is_empty(self):
+        llist = LLQueue()
+        check = llist.is_empty()
+        self.assertEqual(check, True)
+        llist.push(1)
+        check = llist.is_empty()
+        self.assertEqual(check, False)
+
+    def test__data_structures__llqueue__is_full(self):
+        llist = LLQueue(max_size=1)
+        check = llist.is_full()
+        self.assertEqual(check, False)
+        llist.push(1)
         check = llist.is_full()
         self.assertEqual(check, True)
