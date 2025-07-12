@@ -4,6 +4,7 @@ from data_structures.queue import Queue, QueueIsEmptyError, QueueIsFullError
 from data_structures.linked_list import LinkedList, LListIsEmptyError, LListIsFullError
 from data_structures.llqueue import LLQueue, LLQueueIsEmptyError, LLQueueIsFullError
 from data_structures.binary_tree import BinaryTree, ValueAlreadyInBinaryTreeError
+from data_structures.hashmap import HashMap, HashMapIsFullError
 
 
 class Node:
@@ -16,8 +17,8 @@ class Node:
     def __eq__(self, node):
         return self.val == node.val
 
-class TestDataStructures(unittest.TestCase):
-    # Stack
+
+class TestStack(unittest.TestCase):
     def test__data_structures__stack__push(self):
         stack = Stack()
         stack.push(Node(1))
@@ -84,8 +85,9 @@ class TestDataStructures(unittest.TestCase):
         stack.push(Node(1))
         check = stack.is_full()
         self.assertEqual(check, True)
-        
-    # Queue
+
+
+class TestQueue(unittest.TestCase):
     def test__data_structures__queue__push(self):
         queue = Queue()
         queue.push(Node(1))
@@ -152,8 +154,9 @@ class TestDataStructures(unittest.TestCase):
         queue.push(Node(1))
         check = queue.is_full()
         self.assertEqual(check, True)
-        
-    # Linked List
+
+
+class TestLinkedList(unittest.TestCase):
     def test__data_structures__llist__push_to_tail(self):
         llist = LinkedList()
         llist.add_to_tail(1)
@@ -230,7 +233,8 @@ class TestDataStructures(unittest.TestCase):
         check = llist.is_full()
         self.assertEqual(check, True)
 
-    # LLQueue
+
+class TestLLQueue(unittest.TestCase):
     def test__data_structures__llqueue__push(self):
         llist = LLQueue()
         llist.push(1)
@@ -300,7 +304,8 @@ class TestDataStructures(unittest.TestCase):
         check = llist.is_full()
         self.assertEqual(check, True)
 
-    # Binary Tree
+
+class TestBinaryTree(unittest.TestCase):
     def test__data_structures__binary_tree__inorder(self):
         bt = BinaryTree()
         for i in [4, 2, 1, 3, 6, 5, 7]:
@@ -350,8 +355,51 @@ class TestDataStructures(unittest.TestCase):
             bt.insert(i)
         bt.delete(5)
         self.assertEqual(bt.inorder(), [1, 2, 3, 4, 6, 7])
+        
+    def test__data_structures__binary_tree__insert_exception(self):
+        bt = BinaryTree()
+        for i in [4, 2, 1, 3, 6, 5, 7]:
+            bt.insert(i)
+        with self.assertRaises(ValueAlreadyInBinaryTreeError):
+            bt.insert(6)
 
+
+#class TestRedBlackTree(unittest.TestCase):
         #self.assertEqual(rbt.inorder(), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
         #self.assertEqual(rbt.preorder(), [4, 2, 1, 3, 6, 5, 8, 7, 9, 10])
         #self.assertEqual(rbt.postorder(), [1, 3, 2, 5, 7, 10, 9, 8, 6, 4])
         #nums = [10, 6, 3, 4, 8, 7, 9, 1, 5, 2]
+
+
+class TestHashMap(unittest.TestCase):
+    def setUp(self):
+        self.hm = HashMap()
+        self.hm.insert("one", 1)
+        self.hm.insert("two", 2)
+        self.hm.insert("three", 3)
+
+    def test__data_structures__hashmap__insert(self):
+        self.assertEqual(repr(self.hm), " - 0: ('three', 3)\n - 2: ('one', 1)\n - 3: ('two', 2)\n")
+        self.assertEqual(self.hm.get_size(), 3)
+
+    def test__data_structures__hashmap__get(self):
+        value = self.hm.get("one")
+        self.assertEqual(value, 1)
+        self.assertEqual(self.hm.get_size(), 3)
+
+    def test__data_structures__hashmap__pop(self):
+        value = self.hm.pop("one")
+        self.assertEqual(value, 1)
+        self.assertEqual(self.hm.get_size(), 2)
+
+    def test__data_structures__hashmap__exceptions(self):
+        hm_ex = HashMap(default_size=1, maximum_size=4)
+        hm_ex.insert("one", 1)
+        hm_ex.insert("two", 2)
+        hm_ex.insert("three", 3)
+        hm_ex.insert("four", 4)
+        with self.assertRaises(HashMapIsFullError):
+            hm_ex.insert("five", 5)
+        with self.assertRaises(KeyError):
+            hm_ex.get("six")
+        self.assertEqual(hm_ex.get_size(), 4)

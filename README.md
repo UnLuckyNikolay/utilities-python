@@ -17,3 +17,4 @@ Also includes `test.sh` used to run unittests.
     - Linked List
     - LLQueue
     - Binary Tree
+    - Hashmap
