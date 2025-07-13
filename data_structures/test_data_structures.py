@@ -1,10 +1,12 @@
 import unittest
+
 from data_structures.stack import Stack, StackIsEmptyError, StackIsFullError
 from data_structures.queue import Queue, QueueIsEmptyError, QueueIsFullError
 from data_structures.linked_list import LinkedList, LListIsEmptyError, LListIsFullError
 from data_structures.llqueue import LLQueue, LLQueueIsEmptyError, LLQueueIsFullError
 from data_structures.binary_tree import BinaryTree, ValueAlreadyInBinaryTreeError
 from data_structures.hashmap import HashMap, HashMapIsFullError
+from data_structures.trie import Trie
 
 
 class Node:
@@ -403,3 +405,30 @@ class TestHashMap(unittest.TestCase):
         with self.assertRaises(KeyError):
             hm_ex.get("six")
         self.assertEqual(hm_ex.get_size(), 4)
+
+
+class TestTrie(unittest.TestCase):
+    def setUp(self):
+        self.trie = Trie()
+        self.trie.add('boojashaka')
+        self.trie.add('boo')
+        self.trie.add('bone')
+        self.trie.add('book')
+        self.trie.add('booster')
+
+    def test__data_structures__trie(self):
+        self.assertEqual(self.trie.get_size(), 5)
+
+    def test__data_structures__trie__common_prefix(self):
+        self.assertEqual(self.trie.get_longest_common_prefix(), "bo")
+
+    def test__data_structures__trie__matches(self):
+        spam = "A strange ghost rushed into the pub, screamed `boo`, stole a book, and ran away"
+        self.assertEqual(self.trie.find_matches(spam), {"book", "boo"})
+
+    def test__data_structures__trie__prefix(self):
+        self.assertEqual(self.trie.get_words_with_prefix("boo"), ["boo", "boojashaka", "book", "booster"])
+
+    def test__data_structures__trie__exists(self):
+        self.assertEqual(self.trie.exists("bone"), True)
+        self.assertEqual(self.trie.exists("skull"), False)

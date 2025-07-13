@@ -18,3 +18,4 @@ Also includes `test.sh` used to run unittests.
     - LLQueue
     - Binary Tree
     - Hashmap
+    - Trie
