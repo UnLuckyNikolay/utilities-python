@@ -1,3 +1,6 @@
+from collections.abc import Hashable
+
+
 class Graph:
     """Barebones version of a graph using an adjacency list."""
 
@@ -14,7 +17,7 @@ class Graph:
         return result
 
 
-    def add_edge(self, u : int, v : int):
+    def add_edge(self, u : Hashable, v : Hashable):
         """Add an edge with selected coordinates to the graph."""
 
         if u < 0 or v < 0:
@@ -28,7 +31,7 @@ class Graph:
         self._graph[u].add(v)
         self._graph[v].add(u)
 
-    def delete_edge(self, u : int, v : int):
+    def delete_edge(self, u : Hashable, v : Hashable):
         """Remove an edge with selected coordinates from the graph."""
 
         if u < 0 or v < 0:
@@ -41,14 +44,14 @@ class Graph:
             self._graph[u].remove(v)
             self._graph[v].remove(u)
 
-    def edge_exists(self, u : int, v : int) -> bool:
+    def edge_exists(self, u : Hashable, v : Hashable) -> bool:
         """Check if an edge exists at selected coordinates."""
 
         if u in self._graph and v in self._graph:
             return u in self._graph[v] and v in self._graph[u]
         return False
     
-    def get_adjacent_nodes(self, node : int) -> set:
+    def get_adjacent_nodes(self, node : Hashable) -> set:
         """Retuns a set of nodes adjacent to the given node."""
 
         if node in self._graph:
@@ -63,6 +66,39 @@ class Graph:
             if len(pair[1]) == 0:
                 result.append(pair[0])
         return result
+    
+    def breadth_first_search(self, start_vertex : Hashable) -> list:
+        visited = []
+        queue = []
+        queue.append(start_vertex)
+
+        while len(queue) > 0:
+            current = queue.pop(0)
+            visited.append(current)
+            for neigh in sorted(self._graph[current]):
+                if neigh not in visited and neigh not in queue:
+                    queue.append(neigh)
+
+        return visited
+    
+    def depth_first_search(self, start_vertex : Hashable) -> list:
+        if start_vertex not in self._graph:
+            raise ValueError(f"{start_vertex} is not present in the graph.")
+
+        visited = []
+
+        self._depth_first_search_inner_rec(visited, start_vertex)
+
+        return visited
+
+
+    def _depth_first_search_inner_rec(self, visited : list, current_vertex : Hashable) -> list:
+        """Inner recursive function for depth_first_search"""
+
+        visited.append(current_vertex)
+        for neigh in sorted(self._graph[current_vertex]):
+            if neigh not in visited:
+                self._depth_first_search_inner_rec(visited, neigh)
 
 
 class GraphMatrix:
