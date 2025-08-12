@@ -1,9 +1,9 @@
 import unittest
-from sorting.bubble_sort import bubble_sort
-from sorting.merge_sort import merge_sort
-from sorting.insertion_sort import insertion_sort
-from sorting.quick_sort import quick_sort
-from sorting.selection_sort import selection_sort
+from utilities_python.sorting.bubble_sort import bubble_sort
+from utilities_python.sorting.merge_sort import merge_sort
+from utilities_python.sorting.insertion_sort import insertion_sort
+from utilities_python.sorting.quick_sort import quick_sort
+from utilities_python.sorting.selection_sort import selection_sort
 
 
 class Node():

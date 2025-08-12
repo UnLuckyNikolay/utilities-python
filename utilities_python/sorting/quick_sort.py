@@ -1,7 +1,7 @@
 from collections.abc import Callable, Iterable
 from typing import Any
 from numbers import Number
-from shuffle import shuffle
+from utilities_python.shuffle import shuffle
 
 def quick_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reverse: bool = False, shuffling: bool = True) -> list:
     """

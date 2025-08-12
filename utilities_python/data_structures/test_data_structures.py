@@ -1,12 +1,12 @@
 import unittest
 
-from data_structures.stack import Stack, StackIsEmptyError, StackIsFullError
-from data_structures.queue import Queue, QueueIsEmptyError, QueueIsFullError
-from data_structures.linked_list import LinkedList, LListIsEmptyError, LListIsFullError
-from data_structures.llqueue import LLQueue, LLQueueIsEmptyError, LLQueueIsFullError
-from data_structures.binary_tree import BinaryTree, ValueAlreadyInBinaryTreeError
-from data_structures.hashmap import HashMap, HashMapIsFullError
-from data_structures.trie import Trie
+from utilities_python.data_structures.stack import Stack, StackIsEmptyError, StackIsFullError
+from utilities_python.data_structures.queue import Queue, QueueIsEmptyError, QueueIsFullError
+from utilities_python.data_structures.linked_list import LinkedList, LListIsEmptyError, LListIsFullError
+from utilities_python.data_structures.llqueue import LLQueue, LLQueueIsEmptyError, LLQueueIsFullError
+from utilities_python.data_structures.binary_tree import BinaryTree, ValueAlreadyInBinaryTreeError
+from utilities_python.data_structures.hashmap import HashMap, HashMapIsFullError
+from utilities_python.data_structures.trie import Trie
 
 
 class Node:
