@@ -11,13 +11,13 @@ class LLQueueIsFullError(Exception):
 
 class LLQueue:
     """
-    Abstract data structure. First in, first out. Linked List used to store utems.
+    Abstract data structure. First in, first out. Linked List used to store items.
     Complexity of all methods - O(1).
 
     Methods
     -------
-    - push(object)
-        Add object to the end of the llqueue.
+    - push(item)
+        Add item to the end of the llqueue.
         Raises `LLQueueIsFullError` if `max_size` is set and size of the llqueue equals `max_size`.
 
     - pop -> Any | None

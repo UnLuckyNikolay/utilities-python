@@ -15,11 +15,11 @@ class LinkedList:
 
     Methods
     -------
-    - add_to_tail(object)
-        Add object to the end of the linked list.
+    - add_to_tail(item)
+        Add item to the end of the linked list.
 
-    - add_to_head(object)
-        Add object to the start of the linked list.
+    - add_to_head(item)
+        Add item to the start of the linked list.
 
     - pop_from_head -> Any | None
         Removes and returns the item from the head of the linked list.
