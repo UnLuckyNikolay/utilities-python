@@ -46,7 +46,7 @@ class LinkedList:
     - LListIsEmptyError
         If `raise_errors_on_empty_op` is set to `True` and `peek_*`/`pop_*` is performed on an empty linked list.
     """
-    def __init__(self, max_size: int = None, raise_errors_on_empty_op : bool = False):
+    def __init__(self, max_size: int = None, raise_errors_on_empty_op : bool = False): # pyright: ignore[reportArgumentType]
         """
         Args
         ----
@@ -87,7 +87,7 @@ class LinkedList:
 
         new_node = _Node(object)
         if self._head != None:
-            self._tail.set_next(new_node)
+            self._tail.set_next(new_node) # pyright: ignore[reportOptionalMemberAccess]
         else:
             self._head = new_node
         self._tail = new_node

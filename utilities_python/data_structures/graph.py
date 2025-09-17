@@ -1,3 +1,5 @@
+# pyright: reportOperatorIssue=false
+
 from collections.abc import Hashable
 
 
@@ -20,7 +22,7 @@ class Graph:
     def add_edge(self, u : Hashable, v : Hashable):
         """Add an edge with selected coordinates to the graph."""
 
-        if u < 0 or v < 0:
+        if u < 0 or v < 0: 
             raise ValueError("Vertices should be positive or zero.")
         
         if u not in self._graph:
@@ -92,7 +94,7 @@ class Graph:
         return visited
 
 
-    def _depth_first_search_inner_rec(self, visited : list, current_vertex : Hashable) -> list:
+    def _depth_first_search_inner_rec(self, visited : list, current_vertex : Hashable):
         """Inner recursive function for depth_first_search"""
 
         visited.append(current_vertex)

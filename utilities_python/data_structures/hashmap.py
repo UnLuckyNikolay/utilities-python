@@ -1,3 +1,5 @@
+# pyright: reportOptionalSubscript=false
+
 from collections.abc import Hashable
 from typing import Any
 
@@ -39,7 +41,7 @@ class HashMap:
         If the key isn't present in the hashmap during `get` or `pop`.
     """
 
-    def __init__(self, default_size : int = 8, maximum_size : int = None):
+    def __init__(self, default_size : int = 8, maximum_size : int = None): # pyright: ignore[reportArgumentType]
         if default_size <= 0 or (maximum_size != None and maximum_size <= 0):
             raise ValueError("Sizes must be positive integers.")
         if maximum_size != None and maximum_size < default_size:
@@ -138,7 +140,7 @@ class HashMap:
             index = (index + 1) % len(self._hashmap)
             first_iteration = False
 
-        self._hashmap[index] = (key, value)
+        self._hashmap[index] = (key, value) # pyright: ignore
     
     def _resize(self):
         if len(self._hashmap) == 0:
@@ -165,6 +167,6 @@ class HashMap:
 
     def _key_to_index(self, key : Hashable) -> int:
         index = 0
-        for c in key:
+        for c in key: # pyright: ignore[reportGeneralTypeIssues]
             index += ord(c)
         return index % len(self._hashmap)

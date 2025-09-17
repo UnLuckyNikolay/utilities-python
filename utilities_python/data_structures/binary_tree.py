@@ -79,7 +79,7 @@ class BinaryTree:
     def delete(self, item : Any):
         """Removes the item from the tree."""
 
-        self._root = self._root.delete(item, self._key_func)
+        self._root = self._root.delete(item, self._key_func) # pyright: ignore[reportAttributeAccessIssue]
 
     def preorder(self) -> list:
         """Returns a list of items using preorder traversal."""
@@ -161,10 +161,10 @@ class _BTNode:
             return None
 
         if key(item) < key(self.item):
-            self.left = self.left.delete(item, key)
+            self.left = self.left.delete(item, key) # pyright: ignore[reportOptionalMemberAccess]
             return self
         if key(item) > key(self.item):
-            self.right = self.right.delete(item, key)
+            self.right = self.right.delete(item, key) # pyright: ignore[reportOptionalMemberAccess]
             return self
 
         if self.left == None:

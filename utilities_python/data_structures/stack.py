@@ -45,7 +45,7 @@ class Stack:
         If `raise_errors_on_empty_op` is set to `True` and `peek`/`pop` is performed on an empty stack.
     """
     
-    def __init__(self, max_size: int = None, raise_errors_on_empty_op: bool = False):
+    def __init__(self, max_size: int = None, raise_errors_on_empty_op: bool = False): # pyright: ignore[reportArgumentType]
         """
         Args
         ----

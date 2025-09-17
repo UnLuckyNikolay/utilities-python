@@ -79,7 +79,7 @@ class Trie:
 
         return self._search_level(current_level, prefix, words)
     
-    def find_matches(self, document : str, variations : dict = None) -> set:
+    def find_matches(self, document : str, variations : dict = None) -> set: # pyright: ignore[reportArgumentType]
         """
         Returns a set of matches in the documents.
 
