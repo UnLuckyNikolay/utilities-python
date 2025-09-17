@@ -5,7 +5,7 @@ from numbers import Number
 
 def insertion_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reverse: bool = False) -> list:
     """
-    Sorts a copy of the iterable in place and retuns it as a list.
+    Sorts a copy of the iterable in place and returns it as a list.
 
     Pros: fast (for small lists), adaptive, stable.
     

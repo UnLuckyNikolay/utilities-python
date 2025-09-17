@@ -5,7 +5,7 @@ from utilities_python.shuffle import shuffle
 
 def quick_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reverse: bool = False, shuffling: bool = True) -> list:
     """
-    Sorts a shuffled (can be turned off) copy of the iterable in place and retuns it as a list.
+    Sorts a shuffled (can be turned off) copy of the iterable in place and returns it as a list.
 
     Pros: fast, in-place.
     Cons: Slow if iterable is pre-sorted (shuffles it by default), unstable, recursive.

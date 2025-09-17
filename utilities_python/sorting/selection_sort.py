@@ -4,7 +4,7 @@ from numbers import Number
 
 def selection_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reverse: bool = False) -> list:
     """
-    Sorts a copy of the iterable in place and retuns it as a list.
+    Sorts a copy of the iterable in place and returns it as a list.
 
     Pros: in-place, n amount of swaps.
     Cons: slow, unstable.
