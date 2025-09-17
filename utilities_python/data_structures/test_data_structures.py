@@ -7,6 +7,7 @@ from utilities_python.data_structures.llqueue import LLQueue, LLQueueIsEmptyErro
 from utilities_python.data_structures.binary_tree import BinaryTree, ValueAlreadyInBinaryTreeError
 from utilities_python.data_structures.hashmap import HashMap, HashMapIsFullError
 from utilities_python.data_structures.trie import Trie
+from utilities_python.data_structures.red_black_tree import RedBlackTree, ValueAlreadyInRedBlackTreeError
 
 
 class Node:
@@ -366,11 +367,39 @@ class TestBinaryTree(unittest.TestCase):
             bt.insert(6)
 
 
-#class TestRedBlackTree(unittest.TestCase):
-        #self.assertEqual(rbt.inorder(), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-        #self.assertEqual(rbt.preorder(), [4, 2, 1, 3, 6, 5, 8, 7, 9, 10])
-        #self.assertEqual(rbt.postorder(), [1, 3, 2, 5, 7, 10, 9, 8, 6, 4])
-        #nums = [10, 6, 3, 4, 8, 7, 9, 1, 5, 2]
+class TestRedBlackTree(unittest.TestCase):
+    def setUp(self):
+        self.rbt = RedBlackTree()
+        nums = [10, 6, 3, 4, 8, 7, 9, 1, 5, 2]
+        for n in nums:
+            self.rbt.insert(n)
+
+    def test__data_structures__red_black_tree__preorder(self):
+        self.assertEqual(self.rbt.preorder(), [6, 3, 1, 2, 4, 5, 8, 7, 10, 9])
+
+    def test__data_structures__red_black_tree__inorder(self):
+        self.assertEqual(self.rbt.inorder(), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
+    def test__data_structures__red_black_tree__postorder(self):
+        self.assertEqual(self.rbt.postorder(), [2, 1, 5, 4, 3, 7, 9, 10, 8, 6])
+
+    def test__data_structures__red_black_tree__min(self):
+        self.assertEqual(self.rbt.get_min(), 1)
+
+    def test__data_structures__red_black_tree__max(self):
+        self.assertEqual(self.rbt.get_max(), 10)
+
+    def test__data_structures__red_black_tree__height(self):
+        self.assertEqual(self.rbt.get_height(), 4)
+
+    def test__data_structures__red_black_tree__size(self):
+        self.assertEqual(self.rbt.get_size(), 10)
+
+    def test__data_structures__red_black_tree__exists(self):
+        self.assertEqual(self.rbt.exists(7), True)
+
+    def test__data_structures__red_black_tree__exists_false(self):
+        self.assertEqual(self.rbt.exists(42), False)
 
 
 class TestHashMap(unittest.TestCase):

@@ -14,38 +14,38 @@ A library of various functions and data structures created to be used as a pip p
 * `sorting/`
 	* `bubble_sort.py`
 
-		function `bubble_sort(iterable, key=None, reverse=False) -> list`
+		function `bubble_sort(iterable, key=lambda x: x, reverse=False) -> list`
 
 		Sorts a copy of the iterable in place and returns as a list.
 
 	* `insertion_sort.py`
 
-		function `insertion_sort(iterable, key=None, reverse=False) -> list`
+		function `insertion_sort(iterable, key=lambda x: x, reverse=False) -> list`
 
 		Sorts a copy of the iterable in place and returns it as a list.
 
 	* `merge_sort.py`
 
-		function `merge_sort(iterable, key=None, reverse=False) -> list`
+		function `merge_sort(iterable, key=lambda x: x, reverse=False) -> list`
 
 		Sorts the iterable by splitting into smaller and smaller iterables before merging back. Then returns it as a list.
 
 	* `quick_sort.py`
 
-		function `quick_sort(iterable, key=None, reverse=False, shuffling=True) -> list`
+		function `quick_sort(iterable, key=lambda x: x, reverse=False, shuffling=True) -> list`
 
 		Sorts a shuffled (can be turned off) copy of the iterable in place and returns it as a list.
 
 	* `selection_sort.py`
 
-		function `selection_sort(iterable, key=None, reverse=False) -> list`
+		function `selection_sort(iterable, key=lambda x: x, reverse=False) -> list`
 
 		Sorts a copy of the iterable in place and returns it as a list.
 
 * `data_structures/`
 	* `stack.py`
 
-		`Stack(self, max_size=None, raise_errors_on_empty_op=False)`
+		`Stack(max_size=None, raise_errors_on_empty_op=False)`
 
 		Abstract data structure. Last in, first out.  
     	Complexity of all methods - O(1).
@@ -57,11 +57,11 @@ A library of various functions and data structures created to be used as a pip p
 		* `.peek() -> Any | None`
 		* `.size() -> int`
 		* `.is_empty() -> bool`
-		* `is_full() -> bool`
+		* `.is_full() -> bool`
 
 	* `queue.py`
 
-		`Queue(self, max_size=None, raise_errors_on_empty_op=False)`
+		`Queue(max_size=None, raise_errors_on_empty_op=False)`
 	
     	Abstract data structure. First in, first out.
     	Complexity of `pop` - O(n), the rest - O(1).
@@ -73,11 +73,11 @@ A library of various functions and data structures created to be used as a pip p
 		* `.peek() -> Any | None`
 		* `.size() -> int`
 		* `.is_empty() -> bool`
-		* `is_full() -> bool`
+		* `.is_full() -> bool`
 
 	* `linked_list.py`
 
-		`LinkedList(self, max_size=None, raise_errors_on_empty_op=False)`
+		`LinkedList(max_size=None, raise_errors_on_empty_op=False)`
 	
     	Collection of nodes with references to the next one.
 		
@@ -93,7 +93,7 @@ A library of various functions and data structures created to be used as a pip p
 
 	* `llqueue.py`
 
-		`LLQueue(self, max_size=None, raise_errors_on_empty_op=False)`
+		`LLQueue(max_size=None, raise_errors_on_empty_op=False)`
 
     	Abstract data structure. First in, first out. Linked List used to store items.  
     	Complexity of all methods - O(1).
@@ -109,7 +109,7 @@ A library of various functions and data structures created to be used as a pip p
 
 	* `hashmap.py`
 
-		`HashMap(self, default_size=8, maximum_size=None)`
+		`HashMap(default_size=8, maximum_size=None)`
 	
     	Stores objects as pairs of keys (Hashable) and values (Any).
 		
@@ -122,7 +122,7 @@ A library of various functions and data structures created to be used as a pip p
 
 	* `binary_tree.py`
 
-		`BinaryTree(self, key_func=lambda x: x)`
+		`BinaryTree(key_func=lambda x: x)`
 
 		A tree data structure in which each node has at most 2 children.
 
@@ -134,6 +134,24 @@ A library of various functions and data structures created to be used as a pip p
 		* `.get_min() -> Any`
 		* `.get_max() -> Any`
 		* `.get_height() -> int`
+		* `.preorder() -> list`
+		* `.inorder() -> list`
+		* `.postorder() -> list`
+
+	* `red_black_tree.py`
+
+		`RedBlackTree(key_func=lambda x: x)`
+
+		A binary tree data structure with automatic balancing.
+
+		Implemented methods:
+
+		* `.insert(item)`
+		* `.exists(value) -> bool`
+		* `.get_min() -> Any`
+		* `.get_max() -> Any`
+		* `.get_height() -> int`
+		* `.get_size() -> int`
 		* `.preorder() -> list`
 		* `.inorder() -> list`
 		* `.postorder() -> list`
