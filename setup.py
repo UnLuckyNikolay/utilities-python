@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="utilities-python",
-    version="1.0.2",
+    version="1.0.3",
     packages=find_packages(),
     author="UnLuckyNikolay",
     url="https://github.com/UnLuckyNikolay/utilities-python",

@@ -2,7 +2,8 @@ from collections.abc import Callable, Iterable
 from typing import Any
 from numbers import Number
 
-def selection_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reverse: bool = False) -> list:
+
+def selection_sort(iterable: Iterable, key: Callable[[Any], Any] = lambda x: x, reverse: bool = False) -> list:
     """
     Sorts a copy of the iterable in place and returns it as a list.
 
@@ -15,7 +16,7 @@ def selection_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reve
         Iterable that needs to be sorted.
     - key : func, optional
         Function that returns key used for sorting.
-        (default = None)
+        (default = lambda x: x)
     - reverse : bool, optional
         Set to True to sort from biggest to lowest.
         (default = False)
@@ -31,8 +32,8 @@ def selection_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reve
     for i in range(0, len(iterable)):
         next_i = i
         for j in range(i+1, len(iterable)):
-            next_val = key(iterable[next_i]) if key != None else iterable[next_i]
-            current_val = key(iterable[j]) if key != None else iterable[j]
+            next_val = key(iterable[next_i])
+            current_val = key(iterable[j])
 
             if (not reverse and current_val < next_val) or (reverse and current_val > next_val):
                 next_i = j

@@ -1,9 +1,12 @@
+# pyright: reportIndexIssue=false
+
 from collections.abc import Callable, Iterable
 from typing import Any
 from numbers import Number
 from utilities_python.shuffle import shuffle
 
-def quick_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reverse: bool = False, shuffling: bool = True) -> list:
+
+def quick_sort(iterable: Iterable, key: Callable[[Any], Any] = lambda x: x, reverse: bool = False, shuffling: bool = True) -> list:
     """
     Sorts a shuffled (can be turned off) copy of the iterable in place and returns it as a list.
 
@@ -16,7 +19,7 @@ def quick_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reverse:
         Iterable that needs to be sorted.
     - key : func, optional
         Function that returns key used for sorting.
-        (default = None)
+        (default = lambda x: x)
     - reverse : bool, optional
         Set to True to sort from biggest to lowest.
         (default = False)
@@ -38,7 +41,7 @@ def quick_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reverse:
 
     return iterable
     
-def _inner_recursion(iterable: Iterable, low: int, high: int, key: Callable[[Any], Number], reverse: bool):
+def _inner_recursion(iterable: Iterable, low: int, high: int, key: Callable[[Any], Any], reverse: bool):
     """
     Inner recursive function for quick_sort. 
     
@@ -51,26 +54,23 @@ def _inner_recursion(iterable: Iterable, low: int, high: int, key: Callable[[Any
         _inner_recursion(iterable, pivot+1, high, key, reverse)
 
 
-def _inner_sort(iterable: Iterable, low: int, high: int, key: Callable[[Any], Number], reverse: bool) -> int:
+def _inner_sort(iterable: Iterable, low: int, high: int, key: Callable[[Any], Any], reverse: bool) -> int:
     """
     Inner function for quick_sort. 
     
     Chooses the last object in the chosen part of the list as pivot and sorts around it.
     """
     
-    pivot = iterable[high] if key==None else key(iterable[high])
+    pivot = key(iterable[high]) 
     i = low - 1
     for j in range(low, high):
-        if (    
-                (key!=None and 
-                ((not reverse and key(iterable[j]) < pivot) or (reverse and key(iterable[j]) > pivot)))
-            or 
-                (key==None and 
-                ((not reverse and iterable[j] < pivot) or (reverse and iterable[j] > pivot))) 
-        ):
+        if (
+                ((not reverse and key(iterable[j]) < pivot) 
+                or (reverse and key(iterable[j]) > pivot)) 
+            ):
             i+=1
-            iterable[i], iterable[j] = iterable[j], iterable[i]
+            iterable[i], iterable[j] = iterable[j], iterable[i] 
         
     i+=1
-    iterable[i], iterable[high] = iterable[high], iterable[i]
+    iterable[i], iterable[high] = iterable[high], iterable[i] 
     return i

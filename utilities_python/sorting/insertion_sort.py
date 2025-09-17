@@ -3,7 +3,7 @@ from typing import Any
 from numbers import Number
 
 
-def insertion_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reverse: bool = False) -> list:
+def insertion_sort(iterable: Iterable, key: Callable[[Any], Any] = lambda x: x, reverse: bool = False) -> list:
     """
     Sorts a copy of the iterable in place and returns it as a list.
 
@@ -15,7 +15,7 @@ def insertion_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reve
         Iterable that needs to be sorted.
     - key : func, optional
         Function that returns key used for sorting.
-        (default = None)
+        (default = lambda x: x)
     - reverse : bool, optional
         Set to True to sort from biggest to lowest.
         (default = False)
@@ -31,8 +31,8 @@ def insertion_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reve
     for i in range(1, len(iterable)):
         j = i
         while j>0:
-            left_val = iterable[j-1] if key == None else key(iterable[j-1])
-            right_val = iterable[j] if key == None else key(iterable[j])
+            left_val = key(iterable[j-1])
+            right_val = key(iterable[j])
 
             if (not reverse and left_val <= right_val) or (reverse and left_val >= right_val):
                 break

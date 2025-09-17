@@ -3,7 +3,7 @@ from typing import Any
 from numbers import Number
 
 
-def bubble_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reverse: bool = False) -> list:
+def bubble_sort(iterable: Iterable, key: Callable[[Any], Any] = lambda x: x, reverse: bool = False) -> list:
     """
     Baby's first sort.
     Here just to party.
@@ -18,7 +18,7 @@ def bubble_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reverse
         Iterable that needs to be sorted.
     - key : func, optional
         Function that returns key used for sorting.
-        (default = None)
+        (default = lambda x: x)
     - reverse : bool, optional
         Set to True to sort from biggest to lowest.
         (default = False)
@@ -37,8 +37,8 @@ def bubble_sort(iterable: Iterable, key: Callable[[Any], Number] = None, reverse
         swapping = False
 
         for i in range(1, end):
-            left_val = iterable[i-1] if key == None else key(iterable[i-1])
-            right_val = iterable[i] if key == None else key(iterable[i])
+            left_val = key(iterable[i-1])
+            right_val = key(iterable[i])
 
             if (not reverse and left_val > right_val) or (reverse and left_val < right_val):
                 iterable[i-1], iterable[i] = iterable[i], iterable[i-1]
